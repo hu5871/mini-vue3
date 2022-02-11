@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- <script src="./reactivity.global.js"></script> -->
+  <script src="../dist/reactivity.global.js"></script>
+  <script>
+    const { reactive, effect, computed,ref } = VueReactivity;
+    const state = reactive({ name: 'zhangsan', age: 18 })
+    // let runner=effect(()=>{ 
+    //   app.innerHTML=state.name+'今年'+state.age+'岁'
+    // })
+    // runner.effect.stop()
+    // setInterval(()=>{
+    //   state.age=state.age+17
+    // },1000)
+
+
+
+    // computed  计算属性
+
+    // 计算属性默认不执行，只有取值时才执行
+
+    // 依赖的值没有不变化，不会执行
+    // const myage = computed({
+    //   get() {
+    //     return state.age + 18
+    //   },
+    //   set(val) {
+    //     console.log(val);
+    //   }
+    // })
+
+    // effect(() => {
+    //   console.log(myage.value);
+    //   console.log(myage.value);
+    //   console.log(myage.value);
+    // })
+
+    // setTimeout(()=>{
+    //   state.age=1000
+    // },1000)
+
+
+
+    // ref
+
+    const age=ref(19)
+
+        effect(() => {
+      console.log(age.value);
+
+    })
+
+    setTimeout(()=>{
+      age.value=1000
+    },1000)
+  </script>
+</body>
+
+</html>
